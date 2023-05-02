@@ -3,20 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Auth;
-use App\Models\User;
+use App\Http\Controllers\BaseController as BaseController;
 
-class Register extends Controller
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+
+class RegisterController extends BaseController
 {
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|email',
-            'phone'=>'required|numeric',
-            'age'=>'required',
-            'address'=>'required',
+            'phone' => 'required',
+            'age' => 'required',
+            'address' => 'required',
             'password' => 'required',
             'c_password' => 'required|same:password',
         ]);
